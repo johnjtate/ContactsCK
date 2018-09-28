@@ -12,13 +12,13 @@
         <!--Contacts List-->
         <scene sceneID="v8R-a2-0mq">
             <objects>
-                <tableViewController id="ber-nY-i9w" sceneMemberID="viewController">
+                <tableViewController id="ber-nY-i9w" customClass="ContactsListTableViewController" customModule="ContactsCK" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Q6T-za-5fO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Qql-lm-qcV" style="IBUITableViewCellStyleDefault" id="Mph-ML-jeu">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactCell" textLabel="Qql-lm-qcV" style="IBUITableViewCellStyleDefault" id="Mph-ML-jeu">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mph-ML-jeu" id="S0l-4A-yTK">
@@ -35,7 +35,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="yXO-s1-vgP" kind="show" id="h8t-XC-N0M"/>
+                                    <segue destination="yXO-s1-vgP" kind="show" identifier="toContactDetail" id="h8t-XC-N0M"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -52,10 +52,10 @@
             </objects>
             <point key="canvasLocation" x="-43" y="-84"/>
         </scene>
-        <!--Title-->
+        <!--Contact-->
         <scene sceneID="veZ-OZ-MMX">
             <objects>
-                <viewController id="yXO-s1-vgP" sceneMemberID="viewController">
+                <viewController id="yXO-s1-vgP" customClass="ContactDetailViewController" customModule="ContactsCK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TqG-ho-8WA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -120,7 +120,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PSv-XU-LjR"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="5Kd-cu-Xxd">
+                    <navigationItem key="navigationItem" title="Contact" id="5Kd-cu-Xxd">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="6kT-y0-hzv"/>
                     </navigationItem>
                 </viewController>
