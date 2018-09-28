@@ -42,7 +42,7 @@ class ContactController {
         }
     }
     
-    func createContact(withName name: String, phoneNumber: String, emailAddress: String, completion: @escaping (Bool) -> Void) {
+    func createContact(withName name: String, phoneNumber: String?, emailAddress: String?, completion: @escaping (Bool) -> Void) {
         
         let contact = Contact(name: name, phoneNumber: phoneNumber, emailAddress: emailAddress)
         save(contact: contact) { (success) in
@@ -77,7 +77,7 @@ class ContactController {
     }
 
     // modify/update
-    func updateContact(contact: Contact, withName name: String, phoneNumber: String, emailAddress: String, completion: @escaping (Bool) -> Void) {
+    func updateContact(contact: Contact, withName name: String, phoneNumber: String?, emailAddress: String?, completion: @escaping (Bool) -> Void) {
         
         // update the properties of the contact
         contact.name = name
