@@ -335,7 +335,7 @@
 				CODE_SIGN_ENTITLEMENTS = ContactsCK/ContactsCK.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 74SYWHWN72;
-				INFOPLIST_FILE = ContactsCK/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ContactsCK/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -354,7 +354,7 @@
 				CODE_SIGN_ENTITLEMENTS = ContactsCK/ContactsCK.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 74SYWHWN72;
-				INFOPLIST_FILE = ContactsCK/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ContactsCK/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
