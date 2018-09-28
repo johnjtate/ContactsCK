@@ -11,9 +11,9 @@ import CloudKit
 
 class Contact {
     
-    let name: String
-    let phoneNumber: String?
-    let emailAddress: String?
+    var name: String
+    var phoneNumber: String?
+    var emailAddress: String?
     let ckRecordID: CKRecord.ID
     
     // designated initializer
