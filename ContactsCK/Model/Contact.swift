@@ -18,7 +18,6 @@ class Contact {
     
     // designated initializer
     init(name: String, phoneNumber: String, emailAddress: String, ckRecordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString)) {
-        
         self.name = name
         self.phoneNumber = phoneNumber
         self.emailAddress = emailAddress
@@ -40,6 +39,14 @@ class Contact {
     }
 }
 
+// needed for delete function, specifically its used of index(at: contact), in model controller
+extension Contact: Equatable {
+    
+    static func == (lhs: Contact, rhs: Contact) -> Bool {
+        return lhs.name == rhs.name && lhs.phoneNumber == rhs.phoneNumber && lhs.emailAddress == rhs.emailAddress
+    }
+}
+
 extension CKRecord {
     
     // convenience init to create a CKRecord from a Contact model object
@@ -56,6 +63,6 @@ struct Constants {
     
     static let ContactRecordType = "Contact"
     static let NameKey = "Name"
-    static let PhoneNumberKey = "Phone Number"
-    static let EmailAddressKey = "Email Address"
+    static let PhoneNumberKey = "PhoneNumber"
+    static let EmailAddressKey = "EmailAddress"
 }

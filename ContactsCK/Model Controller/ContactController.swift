@@ -22,25 +22,31 @@ class ContactController {
     
     // CRUD functions
     // create/save
-    // note optional completion, so no need to put @escaping
-    func createContact(with name: String, phoneNumber: String, emailAddress: String, completion: ((Contact?) -> Void)?) {
+    func save(contact: Contact, completion: @escaping (Bool) -> Void) {
         
-        let contact = Contact(name: name, phoneNumber: phoneNumber, emailAddress: emailAddress)
-        self.contacts.append(contact)
-        
-        publicDB.save(CKRecord(contact: contact)) { (record, error) in
+        let contactRecord = CKRecord(contact: contact)
+        publicDB.save(contactRecord) { (record, error) in
             
             // handle the error
             if let error = error {
                 print("error saving contact \(error) \(error.localizedDescription)")
-                completion?(nil)
+                completion(false)
                 return
             }
             
-            // unwrap the record saved to CloudKit, create a Contact model object from it, and append to the Source of Truth
-            guard let record = record else { return }
-            let contact = Contact(ckRecord: record)
-            completion?(contact)
+            // unwrap the record saved to CloudKit and create a Contact model object from it
+            guard let record = record, let contact = Contact(ckRecord: record) else { completion(false) ; return }
+            // append to the Source of Truth
+            self.contacts.append(contact)
+            completion(true)
+        }
+    }
+    
+    func createContact(withName name: String, phoneNumber: String, emailAddress: String, completion: @escaping (Bool) -> Void) {
+        
+        let contact = Contact(name: name, phoneNumber: phoneNumber, emailAddress: emailAddress)
+        save(contact: contact) { (success) in
+            completion(success)
         }
     }
     
@@ -96,6 +102,21 @@ class ContactController {
         
     }
     
-    // future functionality: delete
-    
+    func delete(contact: Contact, completion: @escaping (Bool) -> Void) {
+        
+        let recordID = contact.ckRecordID
+        publicDB.delete(withRecordID: recordID) { (ckRecordID, error) in
+            
+            // handle the error
+            if let error = error {
+                print("error deleting contact \(error) \(error.localizedDescription)")
+                completion(false)
+                return
+            }
+        }
+        
+        // remove the error from the Source of Truth locally; note that index(of: contact) function requires Contact model object to conform to the Equatable protocol
+        guard let index = self.contacts.index(of: contact) else { return }
+        self.contacts.remove(at: index)
+    }
 }

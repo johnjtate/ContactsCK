@@ -45,7 +45,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Contacts List" id="CkJ-rT-S9o">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="B7m-nL-cJ1"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="B7m-nL-cJ1">
+                            <connections>
+                                <segue destination="yXO-s1-vgP" kind="show" identifier="addContact" id="1eq-To-sDt"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PM8-mG-nyn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -121,8 +125,17 @@
                         <viewLayoutGuide key="safeArea" id="PSv-XU-LjR"/>
                     </view>
                     <navigationItem key="navigationItem" title="Contact" id="5Kd-cu-Xxd">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="6kT-y0-hzv"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="6kT-y0-hzv">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="yXO-s1-vgP" id="RTW-eP-m1l"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="emailAddressTextLabel" destination="97n-4w-X7k" id="chf-gq-NGp"/>
+                        <outlet property="nameTextLabel" destination="obl-Ho-4Cr" id="Rqw-FP-jNv"/>
+                        <outlet property="phoneNumberTextLabel" destination="Bjg-dl-BjW" id="QQe-iH-uBW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZR0-WK-ncF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -145,4 +158,7 @@
             <point key="canvasLocation" x="-995" y="-84"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="h8t-XC-N0M"/>
+    </inferredMetricsTieBreakers>
 </document>
